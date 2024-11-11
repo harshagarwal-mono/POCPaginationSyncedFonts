@@ -61,3 +61,8 @@ Listend To Filter Results Change Event on the Event Bus
 
 - Binding Font State For MyLibrary & SyncedFonts.
 
+## APIs Needed 
+
+- An API needed for fetching variations & familyMetaData where there should be no limit at variationids
+  - As of now there is a limit of 50 variationIds & 10 familyIds at max. We want to have familyids limit but not variations limit.
+

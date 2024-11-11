@@ -10,6 +10,7 @@ import { filterAssetsBySourceSelection } from './utils/filterAssetsBySource.js';
 import { filterAssetsByVisualSelection, getVisualPropertySortedValues } from './utils/filterAssetsByVisualProperty.js';
 import { calculateFamilyPreviews } from './utils/calculateFamilyPreviews.js';
 import { getFontListActivationStatus } from './utils/getFontListActvationStatus.js';
+import { sortAssets } from './utils/sortAssets.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const stateDataPath = path.join(__dirname, "data", "state.json");
@@ -119,6 +120,10 @@ const main = async () => {
   const {
     objects: { fontsFamilies, fonts },
   } = stateData;
+
+  console.time("compose");
+
+  console.time("All families");
   const allFamilies = {};
 
   for (const fontId in fonts) {
@@ -129,11 +134,11 @@ const main = async () => {
     };
     allFamilies[familyId].fonts[fontId] = fonts[fontId];
   }
+  console.timeEnd("All families");
 
   const getFontState = (id) => stateData.states.fonts[id].state;
   const getFamilyState = (id) => stateData.states.fontsFamilies[id].activationStatus;
 
-  console.time("compose");
 
   console.time("getVisualPropertySortedValues");
 
@@ -159,6 +164,12 @@ const main = async () => {
   const familiesWithPreviews = calculateFamilyPreviews(getFamilyState, filteredFonts);
 
   console.timeEnd("calculateFamilyPreviews");
+
+  console.time("sortAssets");
+
+  const sortedAssets = sortAssets(0, 'updated', familiesWithPreviews);
+
+  console.timeEnd("sortAssets");
 
   console.time("getFontListActivationStatus");
 
