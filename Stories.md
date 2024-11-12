@@ -18,5 +18,7 @@
 - We should be able to activate deactivate fontsList using bulkButton in synced-fonts tabe & MyLibrary Tab [5]
 - We should be able to async unsync  fontsList using bulkButton in synced-fonts tabe & MyLibrary Tab [3]
 - Current Meta data should work as it is working [3]
+- Integration testing [5]
+- Bug Fixes of Integration [3]
 
  
