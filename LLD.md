@@ -3,17 +3,29 @@
 - Create a StateClass with functions to Add, Modify Data, Clean and GetData
 - Share the reference of this StateClass object via plugin using globalProperties. (or windows object in case of any complexity)
 
+
+```
+class AssetsStore {
+    constructor() {
+        this.fonts = {};
+        this.fontsFamilies = {};
+    }
+
+    addData(fontsData) {}
+}
+```
+
 ## Event Bus
 
 - use mitt library
 
-    # Events
+    ### Events
     - AssetsAdded (fontIds, familyIds, trigger) - whenever new assets are added
     - AssetsRemoved (fontIds, familyIds, trigger) - whenever assets are removed
     - AssetsModified (fontIds, familyIds, trigger) - whenever assets are modified
     - FilterResultsChanged - whenever filters results updated [you have to pull this will not push data]
 
-    # Triggers
+    ### Triggers
     - HlsTrigger
     - UIStateTrigger
     - UIMetaDataTrigger
@@ -59,6 +71,18 @@
 
 
 ## Meta Data Flow
+
+- For now we will keep the existing behaviour like fetching data when family details page is open. To support filters as well as data on
+family-row in synced-fonts view, changes will be done in phase2.
+
+### Phase1
+
+- On Family Details Page use the existing flow as it is
+
+
+### Phase2
+
+- 
 
 
 ## Abbreviations or Jargons or Terminology
