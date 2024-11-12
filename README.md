@@ -4,11 +4,12 @@
 - Need Disable State For All The Filters If Not Available.
 - Need Loading Screen For Filter Applying If Needs To Be Changed.
 - Need loading Screen or Loading State For Family Activation Status.
+- Need a loading Icon for count in the ActivationStatus Filter Button
 
 ## Functionaity Tweaks
 - Lets Not Show Languages Only For which the fonts are available. Let show all the languages. Certainly it will save some time.
 - Lets Only Show Sync Bar When User Clicks On Refresh Button. It will also improve performance
-- Lets not show count on ActivationStatus Filter
+- ActivationStatus Filter Bar will not be able to show count in the dropDown but we can show count in the main menu after filter applied
 
 ## Event Bus
 
