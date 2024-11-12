@@ -6,7 +6,6 @@
 ## Event Bus
 
 - use mitt library
-- 
 
     # Events
     - AssetsAdded (fontIds, familyIds, trigger) - whenever new assets are added
@@ -23,7 +22,7 @@
 
 - There will be a service component that will be responsible for these calculations.
 - It will listen or watch for following changes
-    - It will watch for filters apply [which will be done via store]
+    - Either It will watch for filters apply [which will be done via store] or it may use current store initialization pattern to provide a definition for bulk Filter Apply. [Second approach will be used in case bulk apply filter is approved and is integrated in UI]
     - It will watch for assetsAdded, assetsRemoved and assetsModified events only for HlsTrigger,
 - After any of the above change occurred
     - It will show loading screen if necessary [e.g. in case of filters apply] and for activationStatus always
@@ -35,10 +34,39 @@
 
 ## FamilyActivation Status & Font Activation Status Binding
 
-- 
+- We will directly update allData and listen to events to immeditaley reflect state in the UI.
+- SyncedFonts List will listen to the following events for change in state
+    - AssetsModified with Trigger UIState
+    - It will not listen to Add or Remove event as that will be handled via FilterResultsChanged. In Synced fonts screen we just want to show the state change immediately.
+- MyLibrray FontList or FavoritesList will listen to the following events
+    - AssetsModified
+    - AssetsAdded
+    - AssetsRemoved
+- Family Pages[Family-Item & Family-details] will ask its parent list components [synced-fonts list or mylibrary list] to provide function to listen to changes
+    - FamilyPages will be getting fontsData with state in props
+    - We will watch for this fontsData with immediate as true and assign this to a data property say updatedFontsData
+    - UpdatedFontsData will be passed to family-details page and this will be used to show fontsData.
+    - We will add a onModifyListener with help of function given by parent list to addListener on assetModification
+    - OnModify in FamilyPages
+        - If FamilyIds{recieved via modfiy event} doesnot contain the currentFamilyId{received in props} then do not do anything.
+        - will update font activateState in updatedFontsData with help of StateLibrary
+    - We will also watch updatedFontsData in FamilyPages
+        - On Its change , we will mark activationStatus calculation in progress for family.
+        - Wait for 50-100ms for better frame rate and give another components a chance to run its logic
+        - Calculate ActivationStatus of the family
+        - Mark As Done
+    - As per current implementation, these calculations [watchers & onmodify func] for family-pages will be done inside family-renderer[higher order component] component
 
 
 ## Meta Data Flow
+
+
+## Abbreviations or Jargons or Terminology
+
+- StateLibrary - the library that is having allData with non-reactivity
+- FamilyPages - family details & family item page
+- List Pages - Synced_fonts, FontList (FontSet & favorites)
+
 
 
 

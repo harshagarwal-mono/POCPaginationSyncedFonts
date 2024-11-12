@@ -3,6 +3,7 @@
 - Need Loading State For Font List Activation Status.
 - Need Disable State For All The Filters If Not Available.
 - Need Loading Screen For Filter Applying If Needs To Be Changed.
+- Need loading Screen or Loading State For Family Activation Status.
 
 ## Functionaity Tweaks
 - Lets Not Show Languages Only For which the fonts are available. Let show all the languages. Certainly it will save some time.
