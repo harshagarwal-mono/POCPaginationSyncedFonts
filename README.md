@@ -1,69 +1,29 @@
 ## UI Tweaks
-- Apply Filter Button Is Needed So that We can Apply Filter In Batch And Save Some Time.
-- Need Loading State For Font List Activation Status.
-- Need Disable State For All The Filters If Not Available.
-- Need Loading Screen For Filter Applying If Needs To Be Changed.
-- Need loading Screen or Loading State For Family Activation Status.
-- Need a loading Icon for count in the ActivationStatus Filter Button
+- Show Results button Will be added to allow filters in bulk [Figma Needed]
+- Need Disable State For Filters while filters calculation in progress so that user can not re-apply filter during that duration. [Figma Needed]
+- Need Pagination Bar [Figma Needed]
+- Font List Activation Status & Family Activation Status Loading State [Activating State will be reused]
+- Need Loading Screen For Filter Applying & Pagination [Existing loading Screen Will be Resued]
+- Need a Loading Icon for count in the ActivationStatus Filter Button. [use Skeleton Loading]
 
-## Functionaity Tweaks
-- Lets Not Show Languages Only For which the fonts are available. Let show all the languages. Certainly it will save some time.
-- Lets Only Show Sync Bar When User Clicks On Refresh Button. It will also improve performance
-- ActivationStatus Filter Bar will not be able to show count in the dropDown but we can show count in the main menu after filter applied
+## Functionality Tweaks
+- Languages Filters
+  - We will show all languages in the language filter. 
+  - When user will select languages. The and operation for all the languages will be performed on the font level. 
+  - In case any font doesn't exist for the selected language we will show no result screen
+- Visual Filters
+  - We will show complete range regardless of fonts synced
+  - In case font doesn't exist for given range , we will show no results found screen
+- Activation Status Filter
+  - We will not show any count in the doropdown section
 
-## Event Bus
-
-Following Events Can be Created
-- FontsAdded
-- FontsRemoved
-- FontsModified [On Both Added + Modified + Removed]
-- Apply Filter
-- FilterResultsChanged
-
-## Web Worker
-
-Following Message It Will Accept 
-Following Messages It Will Give
+## Requirements Or Dependency 
+- Visual filters
+  - need maximum and minimum values for all the visual filters 
+  - need range names for all the ranges
 
 
-## Families Page Calculation
-
-- Use deferred calculation to avoid calculation on scroll. [defer for 500ms]
-- If Family Is In Active View 
-
-## Filter Section
-
-Listen To Fonts Modified Event on the Event Bus
-- Here If we show Filtering Screen. This will Look odd as it is possible that the results are not updated
-- But if we don't show then for that duration [even if 100ms]. We will not be able to click on filters Button
-- Start Filteration
-
-Watch For Filter Apply in Store
-- Mark Filtering In Progress
-- Start Filteration
-- Mark Filtering As Done
-
-
-## List Activation Status
-
-Listend To Filter Results Change Event on the Event Bus
-- Mark Calculation FontListActivationStatus In Progress.
-- Calculate FontList Activation Status 
-- Mark Calculation FontListActivatioStatus As Done.
-
-## Meta Data Calls
-
-
-## Miscalleneous
-- Lets move The OS Notification Count Calculation Logic & Sync Bar Logic To HLS. This will save a lot of time at UI
-- 
-
-
-# Challenges
-
-- Binding Font State For MyLibrary & SyncedFonts.
-
-## APIs Needed 
+## APIs Needed [Moved to phase2]
 
 - An API needed for fetching variations & familyMetaData where there should be no limit at variationids
   - As of now there is a limit of 50 variationIds & 10 familyIds at max. We want to have familyids limit but not variations limit.
