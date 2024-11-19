@@ -45,6 +45,15 @@ FROM (
 - Have native dependencies so it may pose some issues while app building in electron
 - Getting State based on fontId will take some time. So we may see state update after some time
 
+## SqLite
+
+- Will allow us to use sql base query
+- It will remove the challenge of native depenedency on the cost of in memory db.
+
+### Limtations
+- Use the in-memory database
+- Doesn't use the file based approach.
+
 
 ## Changes In LLD
 
