@@ -1,3 +1,7 @@
+## Points To Follow
+- Lazy Loading [Try to do lazy computation for upcoming features as well as existing wherever possible]
+- Calculation in chunks [We should not do multiple calculation synchronously. Try to have a breathing space for better frame rate]
+
 ## Plugins 
 
 - Use plugins to share refrence of non-reactive stores & eventBus so that they can be accessed via any compnent
@@ -214,6 +218,12 @@ family-row in synced-fonts view, changes will be done in phase2.
 ### Phase2
 
 - 
+
+## Missing Fonts WorkFlow
+
+
+## Points To Discuss
+- Index Db
 
 
 ## Abbreviations or Jargons or Terminology

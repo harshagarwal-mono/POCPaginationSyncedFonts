@@ -20,5 +20,3 @@
 - Current Meta data should work as it is working [3]
 - Integration testing [5]
 - Bug Fixes of Integration [3]
-
- 
